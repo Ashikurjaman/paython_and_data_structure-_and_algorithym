@@ -5,17 +5,17 @@ class Node:
 class LinkList:
     def __init__(self):
         self.head = None
-    def insert_in_begining(self,data):  #
+    def insert_in_begining(self,data):  #insert data in begining
         node = Node(data)
         node.next=self.head
         self.head = node
-    def display(self):
+    def display(self): #printing output
         current=self.head
         while current:
             print(current.data,end='--->')
             current =current.next
         print("None")                   
-    def insert_in_end(self,data):
+    def insert_in_end(self,data): #insert data in the end 
         
         if self.head is None:
             self.head=Node(data,None)
@@ -24,11 +24,11 @@ class LinkList:
         while itr.next:
             itr=itr.next
         itr.next=Node(data,None)   
-    def insert_values(self,data_values):
+    def insert_values(self,data_values): #insert data multiple values
         self.head=None
         for i in data_values:
             self.insert_in_end(i)
-    def get_len(self):
+    def get_len(self): #get length
         count = 0
         itr = self.head
         while itr:
