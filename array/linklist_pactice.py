@@ -95,22 +95,120 @@ class LinkList:
     # add node after a node
     def insert_in_middle(self,index,value):
         if index < 0 or index >= self.n: 
-            return "Index out of bounds"
+            print("Index out of bounds")
         new_node = Node(value) 
         curr =self.head
-        while curr !=None:
-            if curr.value == index:
-                break
-            curr=curr.next
+        for _ in range(0,index - 1): #set node using index
+            curr = curr.next
+        # while curr !=None:
+        #     if curr.self.n == index:
+        #         break
+        #     curr=curr.next
         if curr != None:
             new_node.next=curr.next
             curr.next = new_node
             self.n = self.n +1 
         else:
-           return "item not found"
+           print("item not found")
+
+    def clear(self):
+        self.head =None
+        self.n=0
+
+    #delete first value
+    def delete_head(self):
+        if self.head == None:
+            return "Empty list"
+        self.head = self.head.next
+        self.n -=1
+
+    def pop(self): #delete last item
+        if self.head == None:
+           return "empty list"
+        curr = self.head
+        if curr.next == None:
+            return self.delete_head()
+            
+        while curr.next.next != None:
+            curr = curr.next
+        curr.next = None
+        self.n -=1  
+
+
+    # Delete by value     
+    def remove(self,value):
+        curr = self.head
+        if curr == None:
+            return "empty list"
+        if curr.value == value:
+            return self.delete_head()
+        while curr.next != None:
+            if curr.next.value == value:
+                    break
+            curr=curr.next
+        if curr.next == None:
+            return "item not found"
+        else:
+            curr.next = curr.next.next
+            self.n -=1    
+
+    # search by value
+    def search(self,item):
+        curr = self.head
+        pos = 0
+        while curr != None:
+            if curr.value == item:
+                return pos
+            curr = curr.next
+            pos +=1
+        return "not found"
+    def __getitem__(self,index): # get item value by index number
+        curr = self.head
+        pos = 0
+
+        while curr != None:
+            if pos == index:
+                return curr.value
+            curr = curr.next
+            pos +=1   
+        return 'indexError'  
+    def replace_max(self,value):
+        temp =self.head
+        max = temp
+        while temp != None:
+            print(f"Current node value: {temp.value}")
+            if temp.value > max.value:
+                max = temp
+                print(f"New max found: {max.value}")
+            temp = temp.next
+            print(f"Replacing max value {max.value} with {value}")
+        max.value = value
 
 
 
+        # problem solving        
+    def sum_odd_num(self):
+        temp = self.head
+        count =0
+        result= 0
+        while temp != None:
+            if count % 2 != 0:
+                result = result + temp.value
+            temp = temp.next
+            count +=1
+        print(result)        
+    def reverse(self):
+        prv_node =None
+        curr_node = self.head
+
+
+        while curr_node != None:
+            next_node = curr_node.next
+            curr_node.next = prv_node
+            prv_node = curr_node
+            curr_node = next_node
+        self.head = prv_node 
+        return self.head   
 
 
     def __str__(self):
@@ -124,18 +222,33 @@ class LinkList:
     
 L =LinkList()
 # L.insert_head(5)
-# L.insert_head(4)
-# L.insert_head(3)
-# L.insert_head(2)
-L.append(1)
-L.append(2)
-L.append(3)
-L.insert_in_middle(6,200)
+L.insert_head(4)
+L.insert_head(3)
+L.insert_head(2)
+L.append(55)
+L.append(100)
+L.append(19)
+# L.pop() 
+# L.pop() 
+# L.pop()  
+# L.pop() 
+# L.remove(3) 
+# L.remove(1) 
+
+L.insert_in_middle(3,200)
+# L.insert_in_middle(2,100)
+# L.replace_max(2)
+# print(L.search(200))
+L.reverse()
+print(L)
+# L.sum_odd_num()
+
 # print(len(L))  
-print(L)     
+  
+# print(L[15])   
 
 
 
-
+  
 
 
