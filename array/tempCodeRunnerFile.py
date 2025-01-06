@@ -1,1 +1,4 @@
-L.insert_in_middle(3,200)
+L.append(55)
+# L.append(100)
+# L.append(19)
+# # L.pop() 

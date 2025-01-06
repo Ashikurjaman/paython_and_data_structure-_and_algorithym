@@ -199,17 +199,24 @@ class LinkList:
         print(result)        
     def reverse(self):
         prv_node =None
-        curr_node = self.head
+        curr_node = self.head #2
 
 
+        # while curr_node != None:
+        #     next_node = curr_node.next #3 4 none
+        #     curr_node.next = prv_node #none 2 3
+        #     prv_node = curr_node #2 3 4
+        #     curr_node = next_node #3 4 none
+        # self.head = prv_node 
+        # return self.head  
         while curr_node != None:
             next_node = curr_node.next
             curr_node.next = prv_node
             prv_node = curr_node
-            curr_node = next_node
-        self.head = prv_node 
-        return self.head   
-
+            curr_node = next_node 
+        self.head = prv_node  
+        return self.head
+    # string
 
     def __str__(self):
         result = ''
@@ -225,10 +232,10 @@ L =LinkList()
 L.insert_head(4)
 L.insert_head(3)
 L.insert_head(2)
-L.append(55)
-L.append(100)
-L.append(19)
-# L.pop() 
+# L.append(55)
+# L.append(100)
+# L.append(19)
+# # L.pop() 
 # L.pop() 
 # L.pop()  
 # L.pop() 
