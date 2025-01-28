@@ -1,1 +1,1 @@
-array
+print(current.v)
