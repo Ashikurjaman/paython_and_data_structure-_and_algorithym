@@ -10,14 +10,14 @@ bubble_sort(arr)
 
 
 class Node:
-    def __init__(self,value):
+    def __init__(self,value=0):
         self.value = value
         self.next = None
 
 class LinkList:
     def __init__(self):
         self.head = None       
-    def add(self,data):
+    def add(self,data=0):
         new_node = Node(data)
         new_node.next =self.head
         self.head = new_node
@@ -29,7 +29,7 @@ class LinkList:
         while itr.next:
             itr = itr.next
         itr.next = Node(data)
-            
+
          
             
         
@@ -40,7 +40,8 @@ class LinkList:
             current = current.next
         # print(current.data)
 s = LinkList()    
-s.add(25)
+s.add()
 s.add(26)
 s.insert_in_last(29)
+s.insert_in_last(30)
 s.traverse()
