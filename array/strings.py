@@ -85,7 +85,7 @@ def reverseString(s):
 
 if __name__ == "__main__":
     string = 'geeksforgeeks'
-    checkString = 'abc'  
+    checkString = 'eek'  
     print(check_subString(string,checkString))
     print(insert_position(string,'V',6))
     print(checkTwoString('abc','abc'))  
